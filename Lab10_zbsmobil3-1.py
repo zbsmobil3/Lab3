@@ -41,10 +41,40 @@ class WordAnalyzer:
             print(i,"\t::",a[i], end="\n")
 
 def main():
-    file_options={"1": "moby_dict", "2": "Tarzan", "3": "treasure_island", "4": "monte_cristo"}
+    choice="67 xD"
+    while choice != "5":
+        choice="67 xD"
+        file_options={"1": "princess_mars", "2": "Tarzan", "3": "treasure_island", "4": "monte_cristo"}
+        print()
+        print("--- Word Analyzer ---")
+        print()
+        for i in file_options:
+            print(f"{i}. {file_options[i]}")
+        print("5. Exit")
+        while not(choice=="0" or choice=="1" or choice=="2" or choice=="3" or choice == "4" or choice == "5"):
+            choice=input("Enter your choice (1-5): ")
+            if not(choice=="0" or choice=="1" or choice=="2" or choice=="3" or choice == "4" or choice == "5"):
+                print("Invalid input. Try again")
+        print()
+        if choice != "5":
+            print(f"Processing '{file_options[choice]}.txt'...")
+            print()
+            book=WordAnalyzer(file_options[choice]+".txt")
+            result=book.process_file()
+            if result:
+                pass
+                book.print_report()
+                input("Press Enter to Return to the Menu ")
+            else:
+                print("Analysis failed")
+        else:
+            pass
+    print("Goodbye!")
+    print()
 
 
-book1= WordAnalyzer("princess_mars.txt")
-result=book1.process_file()
-if result:
-    book1.print_report()
+main()
+#book1= WordAnalyzer("princess_mars.txt")
+#result=book1.process_file()
+#if result:
+#book1.print_report()
